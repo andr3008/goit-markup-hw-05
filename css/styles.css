@@ -12,6 +12,7 @@
   --header-border-color: #ececec;
   --social-icons-color: #afb1b8;
   --we-do-text-position: rgba(47, 48, 58, 0.8);
+  --backdrop-color: rgba(0, 0, 0, 0.2);
 }
 body {
   margin: 0;
@@ -84,6 +85,10 @@ img {
   line-height: 1.14;
   letter-spacing: 0.02em;
   text-decoration: none;
+
+  transition-property: color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .site-nav .site-link:hover,
@@ -110,21 +115,29 @@ img {
   line-height: 1.14;
   letter-spacing: 0.02em;
   text-decoration: none;
-}
 
-.contact-link:hover,
-.contact-link:focus {
-  color: var(--accent-color);
+  transition-property: color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .contact-link {
   display: flex;
   align-items: center;
 }
-
-.contact-link,
-.second-contact-icon {
-  fill: var(--primary-text-color);
+.contact-link:hover,
+.contact-link:focus {
+  color: var(--accent-color);
 }
+
+.contact-icon,
+.second-contact-icon {
+  fill: currentColor;
+  transition-property: fill;
+
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 .contact-icon:hover,
 .contact-icon:focus {
   fill: currentColor;
@@ -317,18 +330,21 @@ img {
   height: 44px;
   background-color: var(--primary-bg-color);
   border-radius: 50%;
-  fill: currentColor;
+  fill: var(--social-icons-color);
+
+  transition-property: background-color, fill;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .team-icon {
   width: 20px;
   height: 20px;
 }
-.team-contact-icon li:hover {
+.team-contact-icon li:hover,
+.team-contact-icon li:focus {
   fill: var(--primary-bg-color);
   background-color: var(--accent-color);
-  width: 44px;
-  height: 44px;
 }
 
 /*  Постоянные  клиенты */
@@ -336,15 +352,19 @@ img {
 .client-icons {
   display: inline-flex;
   align-items: center;
-
-  fill: var(--social-icons-color);
 }
+
 .client-icons li:not(:nth-last-child(-n + 1)) {
   margin-right: 30px;
 }
 .client {
   justify-content: center;
   border-radius: 4px;
+  fill: var(--social-icons-color);
+
+  transition-property: fill, border;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .client:hover {
   fill: var(--accent-color);
@@ -390,6 +410,9 @@ img {
   font-size: 14px;
   line-height: 1.71;
   text-decoration: none;
+  transition-property: color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .footer-link:hover,
 .footer-link:focus {
@@ -423,6 +446,10 @@ img {
   background-color: rgb(255, 255, 255, 0.1);
   border-radius: 50%;
   fill: currentColor;
+
+  transition-property: background-color, fill;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .footer-icon {
   display: flex;
@@ -471,6 +498,10 @@ img {
   letter-spacing: 0.06em;
   cursor: pointer;
   border-radius: 4px;
+
+  transition-property: background-color, color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .button:hover,
 .button:focus {
@@ -483,13 +514,17 @@ img {
   left: 0;
   width: 100%;
   height: 100%;
-
-  background-color: rgb(255, 165, 0, 0.5);
+  background-color: var(--backdrop-color);
+  transition-property: background-color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1;
 }
 .backdrop.is-hidden {
   opacity: 0;
   pointer-events: none;
-  visibility: visible;
+  visibility: hidden;
+  transform: scale(2);
 }
 .modal {
   position: absolute;
@@ -499,13 +534,27 @@ img {
   left: 50%;
   transform: translate(-50%, -50%);
 
-  background-color: green;
+  background-color: var(--primary-bg-color);
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
 }
 .modal-icon {
-  background-color: yellow;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  padding-top: 8px;
+  padding-left: 9px;
+
   width: 30px;
   height: 30px;
   border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+
+  background-color: var(--primary-bg-color);
+}
+.modal-icon:hover {
+  background-color: var(--backdrop-color);
 }
 
 /* Портфолио */
@@ -529,6 +578,9 @@ img {
   width: 370px;
   margin-right: 30px;
   margin-bottom: 30px;
+  transition-property: box-shadow;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .filter-item:nth-child(3n) {
   margin-right: 0px;
@@ -582,6 +634,10 @@ img {
   letter-spacing: 0.03em;
   text-align: center;
   cursor: pointer;
+
+  transition-property: background-color, color, box-shadow;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .filters-button {
   display: flex;
